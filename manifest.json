@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "name": "Privacy Detector",
+    "version": "1.0",
+    "description": "Provides Privacy Checkup data when available (from Facebook and Instagram) and deduces personal data from webrequests sent by websites in general.",
+    "permissions": [
+        "tabs",
+        "webRequest",
+        "storage",
+        "cookies",
+        "activeTab",
+        "identity"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup1.html",
+        "default_icon": "icon.jpg"
+    },
+    "icons": {
+        "128": "icon.jpg"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://stackoverflow.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_start"
+        }
+    ]
+}
